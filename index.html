@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL 参数显示示例</title>
+    <title>URL 文本</title>
 </head>
 <body>
 
@@ -21,10 +21,10 @@
         const textParam = getQueryParam('text');
         if (textParam) {
             const textDisplay = document.getElementById('text-display');
-            textDisplay.textContent = `您输入的文本是: ${textParam}`;
+            textDisplay.textContent = `文本: ${textParam}`;
         } else {
             const textDisplay = document.getElementById('text-display');
-            textDisplay.textContent = '请在URL中添加查询参数，例如 "?text=Hello, world!"';
+            textDisplay.textContent = '请在URL中添加查询参数，例如 "https://2s3err.github.io/text/index.html?text=测试"';
         }
     };
 </script>
