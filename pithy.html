@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL 文本</title>
+</head>
+<body>
+
+<div id="text-display"></div>
+
+<script>
+    // 获取URL中的查询参数
+    function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // 读取查询参数并更新页面内容
+    window.onload = function() {
+        const textParam = getQueryParam('text');
+        if (textParam) {
+            const textDisplay = document.getElementById('text-display');
+            textDisplay.textContent = `文本: ${textParam}`;
+        } else {
+            const textDisplay = document.getElementById('text-display');
+            textDisplay.textContent = '请在URL中添加查询参数，例如 "https://2s3err.github.io/text/index.html?text=测试"';
+        }
+    };
+</script>
+
+</body>
+</html>
