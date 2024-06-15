@@ -2,46 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>URL 文本</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL 文本 - v1.3</title>
     <style>
-        /* 添加一些基本的样式来确保移动端适配 */
-        body {
-            margin: 0;
-            padding: 10px;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-        
-        #text-display {
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
+        /* 简单的样式来模拟微信文章标题 */
+        .wechat-article-title {
+            font-size: 24px;
+            font-weight: bold;
             text-align: center;
-        }
-        
-        /* 添加媒体查询以适应不同屏幕大小 */
-        @media (max-width: 600px) {
-            body {
-                padding: 5px;
-            }
-            
-            #text-display {
-                margin: 5px 0;
-                padding: 5px;
-                font-size: 16px;
-            }
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
+<div class="wechat-article-title">内容</div>
+
 <div id="text-display"></div>
 
 <script>
-        // 获取URL中的查询参数
+    // 获取URL中的查询参数
     function getQueryParam(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
@@ -50,12 +30,11 @@
     // 读取查询参数并更新页面内容
     window.onload = function() {
         const textParam = getQueryParam('text');
+        const textDisplay = document.getElementById('text-display');
         if (textParam) {
-            const textDisplay = document.getElementById('text-display');
             textDisplay.textContent = `文本: ${textParam}`;
         } else {
-            const textDisplay = document.getElementById('text-display');
-            textDisplay.textContent = '请在URL中添加查询参数，例如 "https://2s3err.github.io/text/index.html?text=测试""';
+            textDisplay.textContent = '请在URL中添加查询参数，例如 "https://2s3err.github.io/text/index.html?text=测试"';
         }
     };
 </script>
