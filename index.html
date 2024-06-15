@@ -3,22 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL 文本 - v1.3</title>
+    <title>URL 文本 - v1.4</title>
     <style>
-        /* 简单的样式来模拟微信文章标题 */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .wechat-article-title {
             font-size: 24px;
             font-weight: bold;
-            text-align: center;
             margin-bottom: 20px;
+            color: #1a73e8;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .wechat-article-title.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #text-display {
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #text-display.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-<div class="wechat-article-title">内容</div>
-
-<div id="text-display"></div>
+<div class="container">
+    <div class="wechat-article-title">内容</div>
+    <div id="text-display"></div>
+</div>
 
 <script>
     // 获取URL中的查询参数
@@ -30,12 +76,19 @@
     // 读取查询参数并更新页面内容
     window.onload = function() {
         const textParam = getQueryParam('text');
+        const container = document.querySelector('.container');
+        const title = document.querySelector('.wechat-article-title');
         const textDisplay = document.getElementById('text-display');
         if (textParam) {
             textDisplay.textContent = `文本: ${textParam}`;
         } else {
-            textDisplay.textContent = '请在URL中添加查询参数，例如 "https://2s3err.github.io/text/index.html?text=测试"';
+            textDisplay.textContent = '请在URL中添加查询参数，例如 "?text=测试"';
         }
+        setTimeout(function() {
+            container.classList.add('show');
+            title.classList.add('show');
+            textDisplay.classList.add('show');
+        }, 200);
     };
 </script>
 
